@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drobec — súkromný denník bábätka</title>
+<meta name="description" content="Drobec je súkromný denník prvých rokov vášho dieťaťa. Offline, bez reklám a bez sledovania — spomienky, fotky, videá aj hlas ostávajú vo vašom telefóne.">
+<meta property="og:title" content="Drobec — súkromný denník bábätka">
+<meta property="og:description" content="Spomienky, fotky, videá aj hlasové nahrávky prvých rokov — súkromne, offline, vo vašom telefóne.">
+<meta property="og:image" content="assets/logo.png">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+  :root{
+    --bg:#FBF6F0; --bg2:#F4E9DD; --ink:#3B332E; --muted:#8A7A6C;
+    --accent:#BC6B49; --accent2:#C97B5A; --gold:#C79A3E; --card:#FFFFFF;
+    --border:#E2D3C3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:var(--accent2)}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+  header{padding:14px 0;border-bottom:1px solid var(--border);background:rgba(251,246,240,.9);
+         position:sticky;top:0;backdrop-filter:blur(8px);z-index:9}
+  .nav{display:flex;align-items:center;gap:12px}
+  .nav img{width:36px;height:36px;border-radius:9px}
+  .nav b{font-size:18px}
+  .nav .lang{margin-left:auto;display:flex;gap:6px}
+  .lang button{border:1px solid var(--border);background:var(--card);color:var(--muted);
+               padding:5px 12px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer}
+  .lang button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .hero{display:flex;gap:40px;align-items:center;padding:64px 0 48px;flex-wrap:wrap}
+  .hero-txt{flex:1 1 340px;min-width:300px}
+  .hero img.logo{width:120px;height:120px;border-radius:28px;
+                 box-shadow:0 12px 32px rgba(188,107,73,.22)}
+  h1{font-size:42px;line-height:1.15;margin:20px 0 12px}
+  .sub{font-size:19px;color:var(--muted);max-width:460px}
+  .cta{display:inline-block;margin-top:26px;background:var(--accent);color:#fff;
+       text-decoration:none;font-weight:700;padding:14px 28px;border-radius:999px;
+       box-shadow:0 8px 20px rgba(188,107,73,.3)}
+  .cta.soon{background:var(--bg2);color:var(--muted);box-shadow:none;border:1px dashed var(--border);cursor:default}
+  .hero-shot{flex:0 1 300px;text-align:center}
+  .hero-shot img{width:260px;border-radius:28px;border:6px solid #2b2b2b;
+                 box-shadow:0 24px 48px rgba(59,51,46,.25)}
+
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .badge{background:var(--bg2);border:1px solid var(--border);color:#6E5F52;
+         padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600}
+
+  section{padding:48px 0}
+  h2{font-size:28px;margin:0 0 8px;color:var(--accent)}
+  .lead{color:var(--muted);margin:0 0 28px;max-width:600px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px}
+  .card .ico{font-size:26px}
+  .card h3{margin:10px 0 6px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:14.5px}
+
+  .shots{display:flex;gap:20px;overflow-x:auto;padding:10px 2px 20px;scroll-snap-type:x mandatory}
+  .shots img{width:220px;border-radius:22px;border:5px solid #2b2b2b;scroll-snap-align:start;
+             box-shadow:0 14px 30px rgba(59,51,46,.18)}
+
+  .privacy-band{background:var(--bg2);border-radius:28px;padding:36px;margin:24px 0}
+  .privacy-band ul{margin:14px 0 0;padding-left:22px}
+  .privacy-band li{margin:7px 0}
+
+  footer{border-top:1px solid var(--border);padding:34px 0 48px;color:var(--muted);font-size:14px}
+  footer .cols{display:flex;gap:28px;flex-wrap:wrap;justify-content:space-between}
+  @media(max-width:640px){h1{font-size:32px}.hero{padding-top:40px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <img src="assets/logo.png" alt="Drobec logo">
+    <b>Drobec</b>
+    <div class="lang">
+      <button id="btn-sk" class="on" onclick="setLang('sk')">SK</button>
+      <button id="btn-cs" onclick="setLang('cs')">CZ</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-txt">
+      <img class="logo" src="assets/logo.png" alt="Drobec">
+      <h1 data-i18n="heroTitle">Príbeh vášho drobca,<br>bezpečne vo vašom vrecku</h1>
+      <p class="sub" data-i18n="heroSub">Drobec je súkromný denník prvých rokov vášho dieťaťa.
+      Zapisujte malé aj veľké chvíle, pridávajte fotky, videá a hlasové nahrávky —
+      všetko ostáva vo vašom telefóne.</p>
+      <div class="badges">
+        <span class="badge" data-i18n="badgeOffline">100 % offline</span>
+        <span class="badge" data-i18n="badgeNoAds">Bez reklám a sledovania</span>
+        <span class="badge" data-i18n="badgeNoAccount">Bez povinného účtu</span>
+        <span class="badge">Android · iOS*</span>
+      </div>
+      <a class="cta soon" data-i18n="ctaSoon">Čoskoro na Google Play</a>
+    </div>
+    <div class="hero-shot">
+      <img src="assets/05-timeline.png" alt="Ukážka denníka">
+    </div>
+  </div>
+
+  <section id="funkcie">
+    <h2 data-i18n="featTitle">Čo Drobec vie</h2>
+    <p class="lead" data-i18n="featLead">Navrhnutý pre zaneprázdnených rodičov — jednoducho, teplo a jednou rukou.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">📝</div><h3 data-i18n="f1t">Denné spomienky</h3><p data-i18n="f1p">Tri jednoduché polia: čo sa dialo, čo sa podarilo, čo ste zažili. Kategórie ako výlet, oslava či mesačná fotka.</p></div>
+      <div class="card"><div class="ico">🎙️</div><h3 data-i18n="f2t">Hlasové diktovanie</h3><p data-i18n="f2p">Nadiktujte spomienku po slovensky alebo česky, aj keď máte plné ruky. Režim „podrž a hovor".</p></div>
+      <div class="card"><div class="ico">📸</div><h3 data-i18n="f3t">Fotky a videá</h3><p data-i18n="f3p">Ku každému dňu fotky aj videá, galéria na celú obrazovku. Zvukové nahrávky zachytia prvé slová.</p></div>
+      <div class="card"><div class="ico">⭐</div><h3 data-i18n="f4t">Míľniky</h3><p data-i18n="f4p">Prvý úsmev, prvé kroky, prvé slovo — výnimočné dni pekne pokope.</p></div>
+      <div class="card"><div class="ico">📅</div><h3 data-i18n="f5t">Kalendár a spomienka spred roka</h3><p data-i18n="f5p">Kalendár vyznačí dni so spomienkou a appka pripomenie, aké bolo vaše dieťa pred rokom.</p></div>
+      <div class="card"><div class="ico">👶</div><h3 data-i18n="f6t">Viac detí</h3><p data-i18n="f6p">Profily viacerých detí s rýchlym prepínaním a vekom pri každej spomienke.</p></div>
+      <div class="card"><div class="ico">🔐</div><h3 data-i18n="f7t">Zámok aplikácie</h3><p data-i18n="f7p">Odtlačok prsta alebo Face ID — denník je len váš.</p></div>
+      <div class="card"><div class="ico">☁️</div><h3 data-i18n="f8t">Záloha pod vašou kontrolou</h3><p data-i18n="f8p">Voliteľná šifrovaná záloha do súboru, na váš Google Drive (Android) alebo iCloud (iOS).</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-i18n="shotsTitle">Pozrite si Drobca</h2>
+    <div class="shots">
+      <img src="assets/01-welcome.png" alt="Úvodná obrazovka">
+      <img src="assets/05-timeline.png" alt="Denník">
+      <img src="assets/02-editor.png" alt="Nový záznam">
+      <img src="assets/04-kalendar.png" alt="Kalendár">
+    </div>
+  </section>
+
+  <section>
+    <div class="privacy-band">
+      <h2 data-i18n="privTitle">Súkromie na prvom mieste</h2>
+      <p data-i18n="privLead">Drobec nemá vlastné servery a nezbiera o vás žiadne dáta.</p>
+      <ul>
+        <li data-i18n="priv1">Spomienky, fotky aj videá ostávajú <strong>vo vašom zariadení</strong>.</li>
+        <li data-i18n="priv2">Žiadna analytika, žiadne reklamy, žiadne sledovanie.</li>
+        <li data-i18n="priv3">Záloha ide len tam, kam chcete vy — do súboru, na váš Drive či iCloud.</li>
+      </ul>
+      <p><a href="privacy.html" data-i18n="privLink">Prečítajte si celé zásady ochrany súkromia →</a></p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <b>Drobec</b> — <span data-i18n="footTag">súkromný denník bábätka</span><br>
+      © 2026 Dev Idea s.r.o.
+    </div>
+    <div>
+      <a href="privacy.html" data-i18n="footPriv">Ochrana súkromia</a><br>
+      <a href="mailto:140kristek@gmail.com">140kristek@gmail.com</a>
+    </div>
+    <div style="max-width:280px">
+      <span data-i18n="footIos">* iOS verzia je vo vývoji.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  cs: {
+    heroTitle: 'Příběh vašeho drobečka,<br>bezpečně ve vaší kapse',
+    heroSub: 'Drobec je soukromý deník prvních let vašeho dítěte. Zapisujte malé i velké chvíle, přidávejte fotky, videa a hlasové nahrávky — vše zůstává ve vašem telefonu.',
+    badgeOffline: '100 % offline', badgeNoAds: 'Bez reklam a sledování', badgeNoAccount: 'Bez povinného účtu',
+    ctaSoon: 'Brzy na Google Play',
+    featTitle: 'Co Drobec umí',
+    featLead: 'Navržený pro zaneprázdněné rodiče — jednoduše, hřejivě a jednou rukou.',
+    f1t: 'Denní vzpomínky', f1p: 'Tři jednoduchá pole: co se dělo, co se povedlo, co jste zažili. Kategorie jako výlet, oslava či měsíční fotka.',
+    f2t: 'Hlasové diktování', f2p: 'Nadiktujte vzpomínku česky nebo slovensky, i když máte plné ruce. Režim „podrž a mluv".',
+    f3t: 'Fotky a videa', f3p: 'Ke každému dni fotky i videa, galerie na celou obrazovku. Zvukové nahrávky zachytí první slova.',
+    f4t: 'Milníky', f4p: 'První úsměv, první kroky, první slovo — výjimečné dny pěkně pohromadě.',
+    f5t: 'Kalendář a vzpomínka před rokem', f5p: 'Kalendář vyznačí dny se vzpomínkou a aplikace připomene, jaké bylo vaše dítě před rokem.',
+    f6t: 'Více dětí', f6p: 'Profily více dětí s rychlým přepínáním a věkem u každé vzpomínky.',
+    f7t: 'Zámek aplikace', f7p: 'Otisk prstu nebo Face ID — deník je jen váš.',
+    f8t: 'Záloha pod vaší kontrolou', f8p: 'Volitelná šifrovaná záloha do souboru, na váš Google Drive (Android) nebo iCloud (iOS).',
+    shotsTitle: 'Podívejte se na Drobce',
+    privTitle: 'Soukromí na prvním místě',
+    privLead: 'Drobec nemá vlastní servery a nesbírá o vás žádná data.',
+    priv1: 'Vzpomínky, fotky i videa zůstávají <strong>ve vašem zařízení</strong>.',
+    priv2: 'Žádná analytika, žádné reklamy, žádné sledování.',
+    priv3: 'Záloha jde jen tam, kam chcete vy — do souboru, na váš Drive či iCloud.',
+    privLink: 'Přečtěte si celé zásady ochrany soukromí →',
+    footTag: 'soukromý dětský deník', footPriv: 'Ochrana soukromí',
+    footIos: '* iOS verze je ve vývoji.'
+  }
+};
+let skDefaults = null;
+function setLang(l){
+  if(!skDefaults){
+    skDefaults = {};
+    document.querySelectorAll('[data-i18n]').forEach(el => skDefaults[el.dataset.i18n] = el.innerHTML);
+  }
+  const dict = l === 'cs' ? I18N.cs : skDefaults;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const t = dict[el.dataset.i18n]; if(t) el.innerHTML = t;
+  });
+  document.documentElement.lang = l;
+  document.getElementById('btn-sk').classList.toggle('on', l==='sk');
+  document.getElementById('btn-cs').classList.toggle('on', l==='cs');
+}
+</script>
+</body>
+</html>
