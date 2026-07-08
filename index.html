@@ -63,11 +63,16 @@
   h2{font-size:28px;margin:0 0 8px;color:var(--accent)}
   .lead{color:var(--muted);margin:0 0 28px;max-width:600px}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px}
-  .card .ico{font-size:26px}
-  .card h3{margin:10px 0 6px;font-size:17px}
-  .card p{margin:0;color:var(--muted);font-size:14.5px}
+  .fgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px 56px}
+  .fgroup h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+             margin:18px 0 2px;font-weight:700}
+  .fgroup h3::after{content:"";display:block;width:34px;height:2px;background:var(--gold);
+                    opacity:.45;border-radius:2px;margin-top:8px}
+  .fgroup ul{list-style:none;margin:0;padding:0}
+  .fgroup li{padding:13px 0;border-bottom:1px dashed var(--border)}
+  .fgroup li:last-child{border-bottom:none}
+  .fgroup li b{display:block;font-size:16px;margin-bottom:2px}
+  .fgroup li span{color:var(--muted);font-size:14.5px}
 
   .shots{display:flex;gap:20px;overflow-x:auto;padding:10px 2px 20px;scroll-snap-type:x mandatory}
   .shots img{width:220px;border-radius:22px;border:5px solid #2b2b2b;scroll-snap-align:start;
@@ -128,33 +133,53 @@
 
   <section id="funkcie">
     <h2 data-i18n="featTitle">Čo Drobec vie</h2>
-    <p class="lead" data-i18n="featLead">Navrhnutý pre zaneprázdnených rodičov — jednoducho, teplo a jednou rukou.</p>
-    <div class="grid">
-      <div class="card"><div class="ico">📝</div><h3 data-i18n="f1t">Denné spomienky</h3><p data-i18n="f1p">Tri jednoduché polia: čo sa dialo, čo sa podarilo, čo ste zažili. Kategórie ako výlet, oslava či mesačná fotka.</p></div>
-      <div class="card"><div class="ico">🎙️</div><h3 data-i18n="f2t">Hlasové diktovanie</h3><p data-i18n="f2p">Nadiktujte spomienku po slovensky alebo česky, aj keď máte plné ruky. Režim „podrž a hovor".</p></div>
-      <div class="card"><div class="ico">📸</div><h3 data-i18n="f3t">Fotky a videá</h3><p data-i18n="f3p">Ku každému dňu fotky aj videá, galéria na celú obrazovku. Zvukové nahrávky zachytia prvé slová.</p></div>
-      <div class="card"><div class="ico">⭐</div><h3 data-i18n="f4t">Míľniky</h3><p data-i18n="f4p">Prvý úsmev, prvé kroky, prvé slovo — výnimočné dni pekne pokope.</p></div>
-      <div class="card"><div class="ico">📅</div><h3 data-i18n="f5t">Kalendár a spomienka spred roka</h3><p data-i18n="f5p">Kalendár vyznačí dni so spomienkou a appka pripomenie, aké bolo vaše dieťa pred rokom.</p></div>
-      <div class="card"><div class="ico">👶</div><h3 data-i18n="f6t">Viac detí</h3><p data-i18n="f6p">Profily viacerých detí s rýchlym prepínaním a vekom pri každej spomienke.</p></div>
-      <div class="card"><div class="ico">🔐</div><h3 data-i18n="f7t">Zámok aplikácie</h3><p data-i18n="f7p">Odtlačok prsta alebo Face ID — denník je len váš. Obsah sa skryje aj v prepínači aplikácií.</p></div>
-      <div class="card"><div class="ico">☁️</div><h3 data-i18n="f8t">Záloha pod vašou kontrolou</h3><p data-i18n="f8p">Voliteľná šifrovaná záloha do súboru, na váš Google Drive (Android) alebo iCloud (iOS). Appka pripomenie, keď je čas zálohovať.</p></div>
-      <div class="card"><div class="ico">📈</div><h3 data-i18n="f9t">Rastový graf s WHO percentilmi</h3><p data-i18n="f9p">Zapíšte merania z prehliadok a hneď vidíte, ako drobec rastie — na grafe s pásmami percentilov WHO.</p></div>
-      <div class="card"><div class="ico">🦷</div><h3 data-i18n="f13t">Zúbkový graf</h3><p data-i18n="f13p">Ťuknite na zúbok a zaznačte, kedy sa objavil. Prehľadný graf chrupu ukáže, ktoré zúbky už drobec má.</p></div>
-      <div class="card"><div class="ico">🔍</div><h3 data-i18n="f10t">Hľadanie v spomienkach</h3><p data-i18n="f10p">Kedy povedal prvýkrát „mama"? Nájdite spomienku podľa slov, míľnikov aj miest.</p></div>
-      <div class="card"><div class="ico">💌</div><h3 data-i18n="f11t">Kartička na zdieľanie</h3><p data-i18n="f11p">Spomienku pošlete babke jedným ťukom — ako peknú kartičku s fotkou a dátumom.</p></div>
-      <div class="card"><div class="ico">✍️</div><h3 data-i18n="f12t">Navrhnuté pre plné ruky</h3><p data-i18n="f12p">Rozpísaný záznam sa sám uloží a nikdy nestratí. Pri fotke z galérie appka sama ponúkne správny dátum.</p></div>
+    <p class="lead" data-i18n="featLead">Navrhnutý pre zaneprázdnených rodičov — jednoducho a rýchlo.</p>
+    <div class="fgroups">
+      <div class="fgroup">
+        <h3 data-i18n="g1">Každodenné chvíle</h3>
+        <ul>
+          <li><b data-i18n="f1t">Denné spomienky</b><span data-i18n="f1p">Tri jednoduché polia: čo sa dialo, čo sa podarilo, čo ste zažili. Kategórie ako výlet, oslava či mesačná fotka.</span></li>
+          <li><b data-i18n="f2t">Hlasové diktovanie</b><span data-i18n="f2p">Nadiktujte spomienku po slovensky alebo česky, aj keď máte plné ruky. Režim „podrž a hovor".</span></li>
+          <li><b data-i18n="f3t">Fotky a videá</b><span data-i18n="f3p">Ku každému dňu fotky aj videá, galéria na celú obrazovku. Zvukové nahrávky zachytia prvé slová.</span></li>
+          <li><b data-i18n="f12t">Navrhnuté pre plné ruky</b><span data-i18n="f12p">Rozpísaný záznam sa sám uloží a nikdy nestratí. Pri fotke z galérie appka sama ponúkne správny dátum.</span></li>
+        </ul>
+      </div>
+      <div class="fgroup">
+        <h3 data-i18n="g2">Ako drobec rastie</h3>
+        <ul>
+          <li><b data-i18n="f4t">Míľniky</b><span data-i18n="f4p">Prvý úsmev, prvé kroky, prvé slovo — výnimočné dni pekne pokope.</span></li>
+          <li><b data-i18n="f9t">Rastový graf s WHO percentilmi</b><span data-i18n="f9p">Zapíšte merania z prehliadok a hneď vidíte, ako drobec rastie — na grafe s pásmami percentilov WHO.</span></li>
+          <li><b data-i18n="f13t">Zúbkový graf</b><span data-i18n="f13p">Ťuknite na zúbok a zaznačte, kedy sa objavil. Prehľadný graf chrupu ukáže, ktoré zúbky už drobec má.</span></li>
+          <li><b data-i18n="f5t">Kalendár a spomienka spred roka</b><span data-i18n="f5p">Kalendár vyznačí dni so spomienkou a appka pripomenie, aké bolo vaše dieťa pred rokom.</span></li>
+        </ul>
+      </div>
+      <div class="fgroup">
+        <h3 data-i18n="g3">Súkromie a istota</h3>
+        <ul>
+          <li><b data-i18n="f7t">Zámok aplikácie</b><span data-i18n="f7p">Odtlačok prsta alebo Face ID — denník je len váš. Obsah sa skryje aj v prepínači aplikácií.</span></li>
+          <li><b data-i18n="f8t">Záloha pod vašou kontrolou</b><span data-i18n="f8p">Voliteľná šifrovaná záloha do súboru, na váš Google Drive (Android) alebo iCloud (iOS). Appka pripomenie, keď je čas zálohovať.</span></li>
+        </ul>
+      </div>
+      <div class="fgroup">
+        <h3 data-i18n="g4">Pre celú rodinu</h3>
+        <ul>
+          <li><b data-i18n="f6t">Viac detí</b><span data-i18n="f6p">Profily viacerých detí s rýchlym prepínaním a vekom pri každej spomienke.</span></li>
+          <li><b data-i18n="f10t">Hľadanie v spomienkach</b><span data-i18n="f10p">Kedy povedal prvýkrát „mama"? Nájdite spomienku podľa slov, míľnikov aj miest.</span></li>
+          <li><b data-i18n="f11t">Kartička na zdieľanie</b><span data-i18n="f11p">Spomienku pošlete babke jedným ťukom — ako peknú kartičku s fotkou a dátumom.</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section>
     <h2 data-i18n="shotsTitle">Pozrite si Drobca</h2>
     <div class="shots">
+      <img src="assets/01-welcome.png?v=013" alt="Úvodná obrazovka">
       <img src="assets/05-timeline.png?v=013" alt="Denník">
       <img src="assets/06-mesacna.png?v=013" alt="Mesačná — ako rástol">
       <img src="assets/07-zubky.png?v=013" alt="Zúbkový graf">
       <img src="assets/02-editor.png?v=013" alt="Nový záznam">
       <img src="assets/04-kalendar.png?v=013" alt="Kalendár">
-      <img src="assets/01-welcome.png?v=013" alt="Úvodná obrazovka">
     </div>
   </section>
 
@@ -197,7 +222,8 @@ const I18N = {
     badgeOffline: '100 % offline', badgeNoAds: 'Bez reklam a sledování', badgeNoAccount: 'Bez povinného účtu',
     storeIosSmall: 'Stáhnout v', storeAndSmall: 'Brzy na',
     featTitle: 'Co Drobec umí',
-    featLead: 'Navržený pro zaneprázdněné rodiče — jednoduše, hřejivě a jednou rukou.',
+    featLead: 'Navržený pro zaneprázdněné rodiče — jednoduše a rychle.',
+    g1: 'Každodenní chvíle', g2: 'Jak drobeček roste', g3: 'Soukromí a jistota', g4: 'Pro celou rodinu',
     f1t: 'Denní vzpomínky', f1p: 'Tři jednoduchá pole: co se dělo, co se povedlo, co jste zažili. Kategorie jako výlet, oslava či měsíční fotka.',
     f2t: 'Hlasové diktování', f2p: 'Nadiktujte vzpomínku česky nebo slovensky, i když máte plné ruce. Režim „podrž a mluv".',
     f3t: 'Fotky a videa', f3p: 'Ke každému dni fotky i videa, galerie na celou obrazovku. Zvukové nahrávky zachytí první slova.',
